@@ -35,6 +35,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat
 import com.example.fooddata.BuildConfig
 import com.example.fooddata.R
 import com.example.fooddata.presentation.ui.theme.CustomShape
@@ -52,9 +53,10 @@ class MainActivity : ComponentActivity() {
         val api_key = BuildConfig.API_KEY
         super.onCreate(savedInstanceState)
         setContent {
+            this.window.statusBarColor = ContextCompat.getColor(this, R.color.black)
             FoodDataTheme {
-                Surface(modifier = Modifier.fillMaxSize()) {
-                    ScreenFood(nameInterest)
+                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.primary) {
+                    SignIn()
                 }
             }
         }
